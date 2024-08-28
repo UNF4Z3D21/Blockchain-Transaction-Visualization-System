@@ -1,0 +1,73 @@
+<!-- Defines the document type and version (HTML5) -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Setting the title of the webpage -->
+    <title>History</title>
+    <!-- Linking an external CSS file for styling the webpage -->
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+</head>
+<!-- Including the Axios library, a popular JavaScript library for making HTTP requests -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.1/axios.min.js"
+    integrity="sha512-emSwuKiMyYedRwflbZB2ghzX8Cw8fmNVgZ6yQNNXXagFzFOaQmbvQ1vmDkddHjm5AITcBIZfC7k4ShQSjgPAmQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer">
+</script>
+
+<body>
+    <!-- Background element for the page, likely styled with CSS for appearance -->
+    <div class="background"></div>
+    
+    <!-- Navigation bar containing links to various sections/pages of the website -->
+    <nav class="nav-bar">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="search.html">Search</a>
+        <a class="nav-link" href="history.html">History</a>
+    </nav>
+
+    <!-- Display header for the history section -->
+    <h1 class="loginheader">History</h1>
+
+    <!-- Block for displaying history data -->
+    <div id="historyBlock">
+        <main style="width: 50vw;">
+            <!-- Table structure for displaying history. Initially contains only the header. -->
+            <table id="historyTable">
+                <tr>
+                    <th>S No.</th>
+                    <th>Address Id</th>
+                </tr>
+            </table>
+        </main>
+    </div>
+
+    <!-- Footer section of the page -->
+    <footer class="footer" style="bottom: 0; position: relative; width:100%">
+        <p>© 2023 Blockchain Transaction Visualization System</p>
+    </footer>
+</body>
+
+<script>
+    // JavaScript code to fetch and display history data
+
+    // Getting a reference to the table element where history data will be displayed
+    const table = document.getElementById("historyTable");
+
+    // Using Axios to make a GET request to the server to fetch the history data
+    axios.get("http://localhost:3000/history").then((response) => {
+        const data = response.data;
+        let html = "";
+        let count = 1;
+
+        // Looping through the fetched data and constructing HTML to display it in the table
+        data.forEach((address) => {
+            html += `<tr><td>${count}</td><td>${address}</td></tr>`;
+            count++;
+        });
+
+        // Appending the constructed HTML to the table
+        table.innerHTML += html;
+    });
+</script>
+
+</html>

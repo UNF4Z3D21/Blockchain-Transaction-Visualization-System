@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Search Transactions</title>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <script src="https://unpkg.com/force-graph"></script>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.1/axios.min.js"
+      integrity="sha512-emSwuKiMyYedRwflbZB2ghzX8Cw8fmNVgZ6yQNNXXagFzFOaQmbvQ1vmDkddHjm5AITcBIZfC7k4ShQSjgPAmQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="node_modules/neo4j-driver/lib/browser/neo4j-web.min.js"></script>
+  </head>
+  <body>
+    <div class="content-wrapper">
+      <nav class="nav-bar">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="search.html">Search</a>
+        <a class="nav-link" href="history.html">History</a>
+      </nav>
+      <h1 class="loginheader">Search Transactions</h1>
+      a
+      <div class="search-wrapper">
+        <input
+          type="text"
+          id="walletAddress"
+          placeholder="Enter Wallet Address"
+        />
+        <button onclick="searchTransaction()">Search</button>
+      </div>
+      <div id="walletInfo" style="display: none; background-color: black"></div>
+      <div id="graph"></div>
+      <div id="tooltip"></div>
+    </div>
+    <footer class="footer">
+      <p>© 2023 Blockchain Transaction Visualization System</p>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
